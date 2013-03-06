@@ -4,8 +4,8 @@ import java.sql.*;
 public class ConnDB {
 
   /**
-	 * @param args
-	 */
+   * @param args
+   */
 	
 	public static void main(String[] args) throws SQLException, Exception{
 		try{
