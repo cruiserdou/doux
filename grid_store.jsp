@@ -7,7 +7,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 
 <%
-  	Connection conn = null;
+		Connection conn = null;
 		Statement stmt = null;
 		ResultSet rs = null;
 		JsonObject json = null;
@@ -40,6 +40,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			System.out.println(json.toString());
 		}catch(SQLException e){
 			System.out.println(e);
+		}finally{
+			if (rs != null) try{rs.close();} catch(Exception e){}
+			if (stmt != null) try{stmt.close();} catch(Exception e){}
+			if (conn != null) try{conn.close();} catch(Exception e){}
 		}
 		response.getWriter().write(json.toString());
  %>
