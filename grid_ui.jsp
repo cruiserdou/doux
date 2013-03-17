@@ -10,15 +10,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <base href="<%=basePath%>">
     
     <title>Remote Data</title>
-  <meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="Access-Control-Allow-Origin" content="*">
 	<meta http-equiv="description" content="This is my page">
 
-	<link rel="stylesheet" type="text/css" href="http://localhost:8180/ext-4/resources/css/ext-all.css">
-	<script type="text/javascript" src="http://localhost:8180/ext-4/ext-all.js"></script>
+	<link rel="stylesheet" type="text/css" href="http://192.168.1.103:8180/ext-4/resources/css/ext-all.css">
+	<script type="text/javascript" src="http://192.168.1.103:8180/ext-4/ext-all.js"></script>
 	<script type="text/javascript">
 		Ext.onReady(function(){
 			//创建数据模型
@@ -91,7 +91,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				columns: [{
 					header: '日期',
 					dataIndex: 'datadate',
-					width: 180
+					width: 180,
+					renderer: function(v){
+						if (v == 10)
+							return '<img src="fam/accept.png" />';
+						else
+							return '<img src="fam/delete.gif" />';
+					}
 				},{
 					header: '表名',
 					dataIndex: 'tablename',
